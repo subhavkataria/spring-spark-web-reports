@@ -8,13 +8,14 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.subhav.iwm</groupId>
-	<artifactId>Iwm</artifactId>
+	<groupId>com.subhav</groupId>
+	<artifactId>spark-reports</artifactId>
 	<version>0.0.1</version>
-	<name>Iwm</name>
+	<name>Spark Reports</name>
 	<description>Spring Spark </description>
 	<properties>
 		<java.version>11</java.version>
+		<spark.version>3.0.0</spark.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,13 +39,27 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11 -->
 		<dependency>
-			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-core_2.11</artifactId>
-			<version>2.2.0</version>
-			<exclusions>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+			<dependency>
+			    <groupId>org.apache.spark</groupId>
+			    <artifactId>spark-core_2.12</artifactId>
+			    <version>${spark.version}</version>
+			<exclusions> 
 				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-log4j12</artifactId>
@@ -57,18 +72,23 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql_2.11 -->
-		<dependency>
+		<dependency> 
 			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-sql_2.11</artifactId>
-			<version>2.2.0</version>
+			<artifactId>spark-sql_2.12</artifactId> 
+			<version>${spark.version}</version>
 		</dependency>
 
 		<!-- fix java.lang.ClassNotFoundException: org.codehaus.commons.compiler.UncheckedCompileException -->
 		<dependency>
-			<groupId>org.codehaus.janino</groupId>
-			<artifactId>commons-compiler</artifactId>
-			<version>2.7.8</version>
-		</dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>commons-compiler</artifactId>
+        <version>3.0.8</version>
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>janino</artifactId>
+        <version>3.0.8</version>
+    </dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
